@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+import MovieSmallList from "./MovieSmallList";
 
 export default function Home() {
     return (
@@ -7,8 +8,8 @@ export default function Home() {
             <Container
                 sx={{ display: "flex", justifyContent: "space-between" }}
             >
-                <div>Box1</div>
-                <div>Box2</div>
+                <MovieSmallList />
+                <MovieSmallList />
             </Container>
         </>
     );
