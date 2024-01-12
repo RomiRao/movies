@@ -10,7 +10,7 @@ import {
 
 export default function MovieSmallList({ title, movies }) {
     return (
-        <Box width="100%" maxWidth="700px" border="1px solid #E47861">
+        <Box width="100%" maxWidth="570px" border="1px solid #E47861">
             <Box padding={2} textAlign="center" bgcolor="#E47861">
                 {title}
             </Box>
