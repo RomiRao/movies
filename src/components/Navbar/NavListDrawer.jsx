@@ -3,7 +3,6 @@ import {
     List,
     ListItem,
     ListItemButton,
-    ListItemIcon,
     ListItemText,
 } from "@mui/material";
 import { Link } from "react-router-dom";
@@ -14,13 +13,12 @@ export default function NavListDrawer({ setOpen, navLinks }) {
             <List>
                 {navLinks.map((link) => (
                     <ListItem
-                        key={link.title}
+                        key={link}
                         disablePadding
                         onClick={() => setOpen(false)}
                     >
-                        <ListItemButton component={Link} to={link.path}>
-                            <ListItemIcon>{link.icon}</ListItemIcon>
-                            <ListItemText primary={link.title} />
+                        <ListItemButton>
+                            <ListItemText primary={link} />
                         </ListItemButton>
                     </ListItem>
                 ))}

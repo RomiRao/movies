@@ -1,44 +1,65 @@
-import { AppBar, Box, Button, Toolbar, IconButton } from "@mui/material";
+import {
+    AppBar,
+    Box,
+    Button,
+    Toolbar,
+    IconButton,
+    Drawer,
+} from "@mui/material";
 import { PiPopcornDuotone } from "react-icons/pi";
 import { TiThMenu } from "react-icons/ti";
 import { useState } from "react";
+import NavListDrawer from "./NavListDrawer";
 
-const pages = ["Home", "Premieres", "Popular", "Favs", "Search"];
+const navLinks = ["Home", "Premieres", "Popular", "Favs", "Search"];
 
 export default function Navbar() {
-    // const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
     return (
-        <AppBar
-            sx={{ bgcolor: "#565267", boxShadow: "none" }}
-            position="static"
-            elevation={0}
-        >
-            <Toolbar
-                sx={{
-                    justifyContent: { xs: "space-between", md: "flex-start" },
-                }}
+        <>
+            <AppBar
+                sx={{ bgcolor: "#565267", boxShadow: "none" }}
+                position="static"
+                elevation={0}
             >
-                <PiPopcornDuotone fontSize="2em" />
-                <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                    {pages.map((page) => (
-                        <Button
-                            key={page}
-                            sx={{ my: 2, color: "white", display: "block" }}
-                        >
-                            {page}
-                        </Button>
-                    ))}
-                </Box>
-                <IconButton
-                    //onClick={() => setOpen(true)}
+                <Toolbar
                     sx={{
-                        display: { xs: "flex", sm: "none" },
+                        justifyContent: {
+                            xs: "space-between",
+                            md: "flex-start",
+                        },
                     }}
                 >
-                    <TiThMenu />
-                </IconButton>
-            </Toolbar>
-        </AppBar>
+                    <PiPopcornDuotone fontSize="2em" />
+                    <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                        {navLinks.map((link) => (
+                            <Button
+                                key={link}
+                                sx={{ my: 2, color: "white", display: "block" }}
+                            >
+                                {link}
+                            </Button>
+                        ))}
+                    </Box>
+                    <IconButton
+                        onClick={() => setOpen(true)}
+                        sx={{
+                            display: { xs: "flex", sm: "none" },
+                        }}
+                    >
+                        <TiThMenu />
+                    </IconButton>
+                </Toolbar>
+            </AppBar>
+            <Drawer
+                anchor="right"
+                open={open}
+                onClose={() => setOpen(false)}
+                sx={{ display: { xs: "flex", sm: "none" } }}
+            >
+                <NavListDrawer setOpen={setOpen} navLinks={navLinks} />
+            </Drawer>
+        </>
     );
 }
