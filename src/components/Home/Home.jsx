@@ -1,10 +1,11 @@
 import { Box } from "@mui/material";
 import MovieSmallList from "./MovieSmallList";
+import Carrousel from "./Carrousel";
 
 export default function Home() {
     return (
         <>
-            <h1>Carrousel</h1>
+            <Carrousel />
             <Box
                 padding={8}
                 sx={{
