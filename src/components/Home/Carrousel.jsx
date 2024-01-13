@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 
-export default function Carrousel({ title, img, desc, id }) {
+export default function Carrousel({ title, img, desc, id, children }) {
     return (
         <Box
             display="flex"
@@ -36,6 +36,7 @@ export default function Carrousel({ title, img, desc, id }) {
                     Ver mas...
                 </Button>
             </Box>
+            {children}
         </Box>
     );
 }
