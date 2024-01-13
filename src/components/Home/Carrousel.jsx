@@ -1,3 +1,10 @@
+import { useState } from "react";
+
 export default function Carrousel() {
-    return <div>Carrousel</div>;
+    const images = ["", "", ""];
+
+    const [selectedIndex, setSelectedIndex] = useState();
+    const [selectedImages, setSelectedImages] = useState();
+
+    return <></>;
 }
