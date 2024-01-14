@@ -5,14 +5,19 @@ import {
     Toolbar,
     IconButton,
     Drawer,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemText,
 } from "@mui/material";
 import { PiPopcornDuotone } from "react-icons/pi";
 import { TiThMenu } from "react-icons/ti";
 import { useState } from "react";
 import NavListDrawer from "./NavListDrawer";
 import { NavLink } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
-const navLinks = ["Home", "Premieres", "Popular", "Favs", "Search"];
+const navLinks = ["Home", "Premieres", "Popular", "Favorites", "Search"];
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
@@ -33,7 +38,7 @@ export default function Navbar() {
                     }}
                 >
                     <PiPopcornDuotone fontSize="2em" />
-                    <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                    <List sx={{ display: "flex" }}>
                         {navLinks.map((link) => (
                             <NavLink
                                 key={link}
@@ -48,10 +53,15 @@ export default function Navbar() {
                                         : ""
                                 }
                             >
-                                {link}
+                                <ListItem disablePadding>
+                                    <ListItemButton>
+                                        <ListItemText primary={link} />
+                                    </ListItemButton>
+                                </ListItem>
                             </NavLink>
                         ))}
-                    </Box>
+                    </List>
+
                     <IconButton
                         onClick={() => setOpen(true)}
                         sx={{
