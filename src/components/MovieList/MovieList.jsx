@@ -16,10 +16,12 @@ const movies = [
     },
 ];
 
-export default function MovieList() {
+export default function MovieList({ title }) {
     return (
         <>
-            <Typography>title</Typography>
+            <Typography textAlign="center" m={4}>
+                {title}
+            </Typography>
             <Box display="flex" p={3} flexWrap="wrap">
                 {movies.map((movie) => (
                     <MovieCard
