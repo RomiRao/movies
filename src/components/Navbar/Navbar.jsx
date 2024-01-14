@@ -54,7 +54,9 @@ export default function Navbar() {
                                 }
                             >
                                 <ListItem disablePadding>
-                                    <ListItemButton>
+                                    <ListItemButton
+                                        className={styles.buttonLink}
+                                    >
                                         <ListItemText primary={link} />
                                     </ListItemButton>
                                 </ListItem>
