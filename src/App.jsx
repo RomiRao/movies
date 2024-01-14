@@ -11,8 +11,14 @@ function App() {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/premieres" element={<MovieList />} />
-                <Route path="/popular" element={<MovieList />} />
+                <Route
+                    path="/premieres"
+                    element={<MovieList title="Premieres" />}
+                />
+                <Route
+                    path="/popular"
+                    element={<MovieList title="Popular Movies" />}
+                />
                 {/* <Route path="/*" element={<ErrorPage />} /> */}
             </Routes>
             <Footer />
