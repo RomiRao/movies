@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import MovieList from "./components/MovieList/MovieList";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MoviesSearch from "./components/Search/MoviesSearch";
 
 function App() {
     return (
@@ -19,6 +20,11 @@ function App() {
                     path="/popular"
                     element={<MovieList title="Popular Movies" />}
                 />
+                <Route
+                    path="/favorites"
+                    element={<MovieList title="Your Favorites Movies" />}
+                />
+                <Route path="/search" element={<MoviesSearch />} />
                 {/* <Route path="/*" element={<ErrorPage />} /> */}
             </Routes>
             <Footer />
