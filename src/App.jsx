@@ -23,6 +23,7 @@ function App() {
                     path="/favorites"
                     element={<MovieList title="Your Favorites Movies" />}
                 />
+                <Route path="/search" element={<MoviesSearch />} />
                 {/* <Route path="/*" element={<ErrorPage />} /> */}
             </Routes>
             <Footer />
