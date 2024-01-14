@@ -10,6 +10,7 @@ import { PiPopcornDuotone } from "react-icons/pi";
 import { TiThMenu } from "react-icons/ti";
 import { useState } from "react";
 import NavListDrawer from "./NavListDrawer";
+import { NavLink } from "react-router-dom";
 
 const navLinks = ["Home", "Premieres", "Popular", "Favs", "Search"];
 
@@ -34,12 +35,21 @@ export default function Navbar() {
                     <PiPopcornDuotone fontSize="2em" />
                     <Box sx={{ display: { xs: "none", md: "flex" } }}>
                         {navLinks.map((link) => (
-                            <Button
+                            <NavLink
                                 key={link}
-                                sx={{ my: 2, color: "white", display: "block" }}
+                                to={`/${
+                                    link !== "Home" ? link.toLowerCase() : ""
+                                }`}
+                                className={({ isActive, isPending }) =>
+                                    isPending
+                                        ? "pending"
+                                        : isActive
+                                        ? "active"
+                                        : ""
+                                }
                             >
                                 {link}
-                            </Button>
+                            </NavLink>
                         ))}
                     </Box>
                     <IconButton
