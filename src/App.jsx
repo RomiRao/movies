@@ -4,6 +4,7 @@ import Home from "./components/Home/Home";
 import MovieList from "./components/MovieList/MovieList";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MoviesSearch from "./components/Search/MoviesSearch";
 
 function App() {
     return (
