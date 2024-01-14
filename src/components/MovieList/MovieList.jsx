@@ -19,7 +19,7 @@ const movies = [
 export default function MovieList({ title }) {
     return (
         <>
-            <Typography textAlign="center" m={4}>
+            <Typography variant="h4" textAlign="center" m={4}>
                 {title}
             </Typography>
             <Box display="flex" p={3} flexWrap="wrap">
