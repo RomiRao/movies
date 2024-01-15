@@ -37,26 +37,27 @@ export default function Navbar() {
                         },
                     }}
                 >
-                    <PiPopcornDuotone fontSize="2em" />
-                    <List sx={{ display: "flex" }}>
+                    <PiPopcornDuotone
+                        fontSize="2em"
+                        style={{ marginRight: "20px" }}
+                    />
+                    <List sx={{ display: "flex", padding: "0px" }} id="sidebar">
                         {navLinks.map((link) => (
                             <NavLink
                                 key={link}
                                 to={`/${
                                     link !== "Home" ? link.toLowerCase() : ""
                                 }`}
-                                className={({ isActive, isPending }) =>
-                                    isPending
-                                        ? "pending"
+                                className={({ isActive, isTransitioning }) =>
+                                    isTransitioning
+                                        ? `${styles.transition}`
                                         : isActive
-                                        ? "active"
-                                        : ""
+                                        ? `${styles.active}`
+                                        : `${styles.pepito}`
                                 }
                             >
                                 <ListItem disablePadding>
-                                    <ListItemButton
-                                        className={styles.buttonLink}
-                                    >
+                                    <ListItemButton sx={{ height: "70px" }}>
                                         <ListItemText primary={link} />
                                     </ListItemButton>
                                 </ListItem>
