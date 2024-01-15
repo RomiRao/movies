@@ -3,7 +3,7 @@ import { FaRegHeart, FaHeart } from "react-icons/fa";
 
 export default function MovieCard({ title, img }) {
     return (
-        <Box width={230} m={1} bgcolor="green">
+        <Box width={230} m={1}>
             <IconButton
                 sx={{
                     position: "absolute",
