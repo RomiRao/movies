@@ -5,6 +5,7 @@ import MovieList from "./components/MovieList/MovieList";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MoviesSearch from "./components/Search/MoviesSearch";
+import MovieDetail from "./components/MovieList/MovieDetail";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     element={<MovieList title="Your Favorites Movies" />}
                 />
                 <Route path="/search" element={<MoviesSearch />} />
+                <Route path="/movie/:id" element={<MovieDetail />} />
                 {/* <Route path="/*" element={<ErrorPage />} /> */}
             </Routes>
             <Footer />
