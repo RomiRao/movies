@@ -33,7 +33,7 @@ export default function Navbar() {
                     sx={{
                         justifyContent: {
                             xs: "space-between",
-                            md: "flex-start",
+                            sm: "flex-start",
                         },
                     }}
                 >
@@ -41,7 +41,13 @@ export default function Navbar() {
                         fontSize="2em"
                         style={{ marginRight: "20px" }}
                     />
-                    <List sx={{ display: "flex", padding: "0px" }} id="sidebar">
+                    <List
+                        sx={{
+                            display: { xs: "none", sm: "flex" },
+                            padding: "0px",
+                        }}
+                        id="sidebar"
+                    >
                         {navLinks.map((link) => (
                             <NavLink
                                 key={link}
@@ -78,7 +84,7 @@ export default function Navbar() {
             <Drawer
                 anchor="right"
                 open={open}
-                onClose={() => setOpen(false)}
+                onClick={() => setOpen(false)}
                 sx={{ display: { xs: "flex", sm: "none" } }}
             >
                 <NavListDrawer setOpen={setOpen} navLinks={navLinks} />
