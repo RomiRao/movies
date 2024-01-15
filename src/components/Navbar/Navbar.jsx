@@ -5,13 +5,19 @@ import {
     Toolbar,
     IconButton,
     Drawer,
+    List,
+    ListItem,
+    ListItemButton,
+    ListItemText,
 } from "@mui/material";
 import { PiPopcornDuotone } from "react-icons/pi";
 import { TiThMenu } from "react-icons/ti";
 import { useState } from "react";
 import NavListDrawer from "./NavListDrawer";
+import { NavLink } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
-const navLinks = ["Home", "Premieres", "Popular", "Favs", "Search"];
+const navLinks = ["Home", "Premieres", "Popular", "Favorites", "Search"];
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
@@ -27,21 +33,44 @@ export default function Navbar() {
                     sx={{
                         justifyContent: {
                             xs: "space-between",
-                            md: "flex-start",
+                            sm: "flex-start",
                         },
                     }}
                 >
-                    <PiPopcornDuotone fontSize="2em" />
-                    <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                    <PiPopcornDuotone
+                        fontSize="2em"
+                        style={{ marginRight: "20px" }}
+                    />
+                    <List
+                        sx={{
+                            display: { xs: "none", sm: "flex" },
+                            padding: "0px",
+                        }}
+                        id="sidebar"
+                    >
                         {navLinks.map((link) => (
-                            <Button
+                            <NavLink
                                 key={link}
-                                sx={{ my: 2, color: "white", display: "block" }}
+                                to={`/${
+                                    link !== "Home" ? link.toLowerCase() : ""
+                                }`}
+                                className={({ isActive, isTransitioning }) =>
+                                    isTransitioning
+                                        ? `${styles.transition}`
+                                        : isActive
+                                        ? `${styles.active}`
+                                        : `${styles.pepito}`
+                                }
                             >
-                                {link}
-                            </Button>
+                                <ListItem disablePadding>
+                                    <ListItemButton sx={{ height: "70px" }}>
+                                        <ListItemText primary={link} />
+                                    </ListItemButton>
+                                </ListItem>
+                            </NavLink>
                         ))}
-                    </Box>
+                    </List>
+
                     <IconButton
                         onClick={() => setOpen(true)}
                         sx={{
@@ -55,7 +84,7 @@ export default function Navbar() {
             <Drawer
                 anchor="right"
                 open={open}
-                onClose={() => setOpen(false)}
+                onClick={() => setOpen(false)}
                 sx={{ display: { xs: "flex", sm: "none" } }}
             >
                 <NavListDrawer setOpen={setOpen} navLinks={navLinks} />
