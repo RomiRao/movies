@@ -79,8 +79,11 @@ export default function Home() {
                             justifyContent: "space-around",
                         }}
                     >
-                        <MovieSmallList title="Latest Releases" />
-                        <MovieSmallList title="Best Rated Movies" />
+                        <MovieSmallList title="Popular" fetch="popular" />
+                        <MovieSmallList
+                            title="Best Rated Movies"
+                            fetch="top_rated"
+                        />
                     </Box>
                 </>
             )}
