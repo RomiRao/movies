@@ -14,7 +14,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route
-                    path="/last-releases"
+                    path="/latest"
                     element={
                         <MovieList title="Last releases" fetch="now_playing" />
                     }
