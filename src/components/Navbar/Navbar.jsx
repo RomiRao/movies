@@ -17,7 +17,7 @@ import NavListDrawer from "./NavListDrawer";
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
-const navLinks = ["Home", "Premieres", "Popular", "Favorites", "Search"];
+const navLinks = ["Home", "Last releases", "Popular", "Favorites", "Search"];
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
