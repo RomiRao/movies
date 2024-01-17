@@ -18,19 +18,11 @@ export default function MovieDetail() {
     return (
         <>
             {data.title ? (
-                <Box padding={40} display="flex" justifyContent="center">
-                    <BarLoader
-                        color="#E47861"
-                        size={150}
-                        aria-label="Loading Spinner"
-                    />
-                </Box>
-            ) : (
                 <Box
                     display="flex"
                     justifyContent="center"
                     sx={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.poster_path})`,
+                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${data.backdrop_path})`,
                         backgroundPosition: "center",
                         backgroundSize: "cover",
                         backgroundColor: "rgba(0, 0, 0, 0.6)",
@@ -49,7 +41,7 @@ export default function MovieDetail() {
                         }}
                     >
                         <img
-                            src="https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/f154230aab3191aba977f337d392f812.jpe"
+                            src={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
                             style={{ width: "270px", marginRight: "100px" }}
                         />
                         <Box sx={{ width: "55%" }}>
@@ -68,10 +60,10 @@ export default function MovieDetail() {
                                     }}
                                 >
                                     <Typography variant="h4" mr="4px">
-                                        Title movie
+                                        {data.title}
                                     </Typography>
                                     <Typography variant="h6" component="span">
-                                        2023
+                                        {data.release_date}
                                     </Typography>
                                 </Box>
                                 <Button
@@ -84,14 +76,26 @@ export default function MovieDetail() {
                             </Box>
                             <Typography variant="h6">Sinopsis</Typography>
                             <Typography variant="body2" mb={2}>
-                                Text
+                                {data.overview}
                             </Typography>
                             <Typography variant="h6">Genres</Typography>
                             <List>
-                                <ListItem>Comedy</ListItem>
+                                {data.genres.map((genre) => (
+                                    <ListItem key={genre.name}>
+                                        {genre.name}
+                                    </ListItem>
+                                ))}
                             </List>
                         </Box>
                     </Box>
+                </Box>
+            ) : (
+                <Box padding={40} display="flex" justifyContent="center">
+                    <BarLoader
+                        color="#E47861"
+                        size={150}
+                        aria-label="Loading Spinner"
+                    />
                 </Box>
             )}
         </>
