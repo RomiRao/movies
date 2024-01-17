@@ -25,11 +25,11 @@ export default function Home() {
         clearTimeout(timeout);
     };
 
-    goNext();
-
     const goToIndex = (index) => {
         setCurrentIndex(index);
     };
+
+    goNext();
 
     return (
         <>
