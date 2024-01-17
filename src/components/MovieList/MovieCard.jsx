@@ -13,7 +13,10 @@ export default function MovieCard({ title, img }) {
             >
                 <FaRegHeart color="red" />
             </IconButton>
-            <img src={img} width="100%" />
+            <img
+                src={`https://image.tmdb.org/t/p/original/${img}`}
+                width="100%"
+            />
             <Typography textAlign="center" my={2}>
                 {title}
             </Typography>

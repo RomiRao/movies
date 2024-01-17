@@ -11,7 +11,7 @@ export default function Home() {
 
     const { data, getMovies } = useMovies();
     useEffect(() => {
-        getMovies();
+        getMovies("popular");
     }, [currentIndex]);
 
     const goNext = () => {
@@ -79,8 +79,8 @@ export default function Home() {
                             justifyContent: "space-around",
                         }}
                     >
-                        <MovieSmallList title="Popular movies" />
-                        <MovieSmallList title="Best rated movies" />
+                        <MovieSmallList title="Latest Releases" />
+                        <MovieSmallList title="Best Rated Movies" />
                     </Box>
                 </>
             )}

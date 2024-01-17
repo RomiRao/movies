@@ -10,7 +10,7 @@ export default function Carrousel({ title, img, desc, id, children }) {
             width="100%"
             height={400}
             sx={{
-                backgroundImage: `url(${img})`,
+                backgroundImage: `url(https://image.tmdb.org/t/p/original/${img})`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
             }}
