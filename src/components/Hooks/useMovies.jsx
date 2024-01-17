@@ -4,12 +4,12 @@ import axios from "axios";
 const useMovies = () => {
     const [data, setData] = useState([]);
 
-    const getMovies = async () => {
+    const getMovies = async (category) => {
         try {
             const apiKey = import.meta.env.VITE_ACCESS_TOKEN;
 
             const response = await axios.get(
-                "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+                `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
                 {
                     headers: {
                         Authorization: `Bearer ${apiKey}`,
