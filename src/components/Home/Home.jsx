@@ -47,7 +47,7 @@ export default function Home() {
                         <Carrousel
                             title={data[currentIndex].title}
                             desc={data[currentIndex].overview}
-                            img={data[currentIndex].poster_path}
+                            img={data[currentIndex].backdrop_path}
                         >
                             <Box
                                 display="flex"
