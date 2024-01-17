@@ -17,7 +17,7 @@ export default function MovieDetail() {
 
     return (
         <>
-            {data.length === 0 ? (
+            {data.title ? (
                 <Box padding={40} display="flex" justifyContent="center">
                     <BarLoader
                         color="#E47861"
