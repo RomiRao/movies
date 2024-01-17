@@ -29,7 +29,7 @@ const useMovies = () => {
             const apiKey = import.meta.env.VITE_ACCESS_TOKEN;
 
             const response = await axios.get(
-                `https://api.themoviedb.org/3/movie/${id}?language=en-US&page=1`,
+                `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
                 {
                     headers: {
                         Authorization: `Bearer ${apiKey}`,
