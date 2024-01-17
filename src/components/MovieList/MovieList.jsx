@@ -8,7 +8,7 @@ export default function MovieList({ title, fetch }) {
 
     useEffect(() => {
         getMovies(fetch);
-    }, []);
+    }, [data]);
 
     return (
         <>
