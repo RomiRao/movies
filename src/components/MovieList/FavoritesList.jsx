@@ -32,19 +32,30 @@ export default function FavoritesList() {
                     <Typography variant="h4" textAlign="center" m={4}>
                         Favorites
                     </Typography>
-                    <Box display="flex" p={3} flexWrap="wrap">
-                        {favorites.map((movie) => (
-                            <MovieCard
-                                key={movie.title}
-                                title={movie.title}
-                                img={movie.img}
-                                id={movie.id}
-                            />
-                        ))}
+                    <Box
+                        display="flex"
+                        alignItems="center"
+                        flexDirection="column"
+                    >
+                        <Box
+                            display="flex"
+                            maxWidth="87.5%"
+                            p={3}
+                            flexWrap="wrap"
+                        >
+                            {favorites.map((movie) => (
+                                <MovieCard
+                                    key={movie.title}
+                                    title={movie.title}
+                                    img={movie.img}
+                                    id={movie.id}
+                                />
+                            ))}
+                        </Box>
+                        <Box>
+                            <Pagination count={10} color="primary" />
+                        </Box>
                     </Box>
-                    <Box>
-                        <Pagination count={10} color="primary" />
-                    </Box>{" "}
                 </>
             )}
         </>

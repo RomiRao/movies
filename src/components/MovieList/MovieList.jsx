@@ -26,19 +26,30 @@ export default function MovieList({ title, fetch }) {
                     <Typography variant="h4" textAlign="center" m={4}>
                         {title}
                     </Typography>
-                    <Box display="flex" p={3} flexWrap="wrap">
-                        {data.map((movie) => (
-                            <MovieCard
-                                key={movie.title}
-                                title={movie.title}
-                                img={movie.poster_path}
-                                id={movie.id}
-                            />
-                        ))}
+                    <Box
+                        display="flex"
+                        alignItems="center"
+                        flexDirection="column"
+                    >
+                        <Box
+                            display="flex"
+                            p={3}
+                            maxWidth="87.5%"
+                            flexWrap="wrap"
+                        >
+                            {data.map((movie) => (
+                                <MovieCard
+                                    key={movie.title}
+                                    title={movie.title}
+                                    img={movie.poster_path}
+                                    id={movie.id}
+                                />
+                            ))}
+                        </Box>
+                        <Box>
+                            <Pagination count={10} color="primary" />
+                        </Box>
                     </Box>
-                    <Box>
-                        <Pagination count={10} color="primary" />
-                    </Box>{" "}
                 </>
             )}
         </>
