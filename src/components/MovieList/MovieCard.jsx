@@ -18,7 +18,7 @@ export default function MovieCard({ title, img, id }) {
                         zIndex: "1",
                         m: "5px",
                     }}
-                    onClick={() => delFavs(id)}
+                    onClick={(e) => delFavs(e, id)}
                 >
                     <FaHeart color="red" />
                 </IconButton>
@@ -29,7 +29,7 @@ export default function MovieCard({ title, img, id }) {
                         zIndex: "1",
                         m: "5px",
                     }}
-                    onClick={() => addFavs({ title, img, id })}
+                    onClick={(e) => addFavs(e, { title, img, id })}
                 >
                     <FaRegHeart color="red" />
                 </IconButton>
