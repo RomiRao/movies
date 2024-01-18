@@ -41,7 +41,7 @@ export default function Carrousel({ title, img, desc, id, children }) {
                     size="small"
                     onClick={() => navigate(`/movie/${id}`)}
                 >
-                    Ver mas...
+                    Details
                 </Button>
             </Box>
             {children}
