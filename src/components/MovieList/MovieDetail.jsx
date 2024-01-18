@@ -63,7 +63,7 @@ export default function MovieDetail() {
                                         {data.title}
                                     </Typography>
                                     <Typography variant="h6" component="span">
-                                        {data.release_date}
+                                        {data.release_date.slice(0, 4)}
                                     </Typography>
                                 </Box>
                                 <Button
@@ -82,7 +82,7 @@ export default function MovieDetail() {
                             <List>
                                 {data.genres.map((genre) => (
                                     <ListItem key={genre.name}>
-                                        {genre.name}
+                                        <Typography>- {genre.name}</Typography>
                                     </ListItem>
                                 ))}
                             </List>
