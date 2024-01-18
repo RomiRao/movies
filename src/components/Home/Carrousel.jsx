@@ -11,10 +11,10 @@ export default function Carrousel({ title, img, desc, id, children }) {
             justifyContent="end"
             alignItems="center"
             width="100%"
-            height={400}
+            height={460}
             sx={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original/${img})`,
-                backgroundPosition: "center",
+                backgroundPosition: "top",
                 backgroundSize: "cover",
             }}
         >
@@ -23,7 +23,7 @@ export default function Carrousel({ title, img, desc, id, children }) {
                 p={2}
                 elevation={6}
                 sx={{
-                    backgroundColor: "rgba(229, 228, 225, 0.85)",
+                    backgroundColor: "rgba(229, 228, 225, 0.65)",
                     width: "90%",
                     maxWidth: "500px",
                     m: 4,
