@@ -32,7 +32,6 @@ export default function Home() {
             } else if (currentIndex === data.length - 1) {
                 setCurrentIndex(0);
             }
-            console.log("me ejecute perras");
         }, 5000);
     };
 
@@ -53,6 +52,7 @@ export default function Home() {
                             title={data[currentIndex].title}
                             desc={data[currentIndex].overview}
                             img={data[currentIndex].backdrop_path}
+                            id={data[currentIndex].id}
                         >
                             <Box
                                 display="flex"

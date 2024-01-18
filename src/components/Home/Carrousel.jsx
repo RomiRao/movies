@@ -1,6 +1,9 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function Carrousel({ title, img, desc, id, children }) {
+    const navigate = useNavigate();
+
     return (
         <Box
             display="flex"
@@ -32,7 +35,12 @@ export default function Carrousel({ title, img, desc, id, children }) {
                 <Typography m={1} variant="body2">
                     {desc}
                 </Typography>
-                <Button m={1} variant="contained" size="small">
+                <Button
+                    m={1}
+                    variant="contained"
+                    size="small"
+                    onClick={() => navigate(`/movie/${id}`)}
+                >
                     Ver mas...
                 </Button>
             </Box>
