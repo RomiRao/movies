@@ -14,12 +14,16 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route
-                    path="/premieres"
-                    element={<MovieList title="Premieres" />}
+                    path="/latest"
+                    element={
+                        <MovieList title="Last releases" fetch="now_playing" />
+                    }
                 />
                 <Route
                     path="/popular"
-                    element={<MovieList title="Popular Movies" />}
+                    element={
+                        <MovieList title="Popular Movies" fetch="popular" />
+                    }
                 />
                 <Route
                     path="/favorites"
