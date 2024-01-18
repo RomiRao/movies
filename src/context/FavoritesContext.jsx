@@ -8,20 +8,20 @@ const FavoritesContextProvider = ({ children }) => {
     const [favorites, setFavorites] = useState([]);
 
     useEffect(() => {
-        get("favs") ? setFavorites(get("favs")) : setFavorites([]);
+        get("favMovies") ? setFavorites(get("favMovies")) : setFavorites([]);
     }, []);
 
     const addFavs = (e, movie) => {
         e.stopPropagation();
         setFavorites([...favorites, movie]);
-        set("favs", [...favorites, movie]);
+        set("favMovies", [...favorites, movie]);
     };
 
     const delFavs = (e, id) => {
         e.stopPropagation();
         setFavorites(favorites.filter((movie) => movie.id !== id));
         set(
-            "favs",
+            "favMovies",
             favorites.filter((movie) => movie.id !== id)
         );
     };
