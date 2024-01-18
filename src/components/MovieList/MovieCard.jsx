@@ -1,4 +1,4 @@
-import { Box, Icon, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { FavoritesContext } from "../../context/FavoritesContext";
@@ -29,13 +29,22 @@ export default function MovieCard({ title, img, id }) {
                         zIndex: "1",
                         m: "5px",
                     }}
-                    onClick={(e) => addFavs(e, { title, img, id })}
+                    onClick={(e) =>
+                        addFavs(e, {
+                            title,
+                            img,
+                            id,
+                        })
+                    }
                 >
                     <FaRegHeart color="red" />
                 </IconButton>
             )}
 
-            <img src={img} width="100%" />
+            <img
+                src={`https://image.tmdb.org/t/p/original${img}`}
+                width="100%"
+            />
             <Typography textAlign="center" my={2}>
                 {title}
             </Typography>
