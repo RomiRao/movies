@@ -27,7 +27,6 @@ const FavoritesContextProvider = ({ children }) => {
     };
 
     const isFavs = (id) => {
-        console.log(favorites);
         return favorites.some((movie) => movie.id === id);
     };
 
