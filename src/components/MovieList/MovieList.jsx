@@ -32,6 +32,7 @@ export default function MovieList({ title, fetch }) {
                                 key={movie.title}
                                 title={movie.title}
                                 img={movie.poster_path}
+                                id={movie.id}
                             />
                         ))}
                     </Box>
