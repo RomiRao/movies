@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import useLocalStorage from "../Hooks/useLocalStorage";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export const FavoritesContext = createContext();
 

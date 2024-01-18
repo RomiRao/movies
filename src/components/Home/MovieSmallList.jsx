@@ -9,7 +9,7 @@ import {
     Typography,
 } from "@mui/material";
 import { useEffect } from "react";
-import useMovies from "../Hooks/useMovies";
+import useMovies from "../../hooks/useMovies";
 import { useNavigate } from "react-router-dom";
 
 export default function MovieSmallList({ title, fetch }) {

@@ -1,7 +1,7 @@
 import { Pagination, Typography, Box } from "@mui/material";
 import MovieCard from "./MovieCard";
 import { useEffect } from "react";
-import useMovies from "../Hooks/useMovies";
+import useMovies from "../../hooks/useMovies";
 import BarLoader from "react-spinners/BarLoader";
 
 export default function MovieList({ title, fetch }) {

@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MoviesSearch from "./components/Search/MoviesSearch";
 import MovieDetail from "./components/MovieList/MovieDetail";
-import FavoritesContextProvider from "./components/Context/FavoritesContext";
+import FavoritesContextProvider from "./context/FavoritesContext";
 
 function App() {
     return (
