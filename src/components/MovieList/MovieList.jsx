@@ -31,7 +31,7 @@ export default function MovieList({ title, fetch }) {
                             <MovieCard
                                 key={movie.title}
                                 title={movie.title}
-                                img={movie.poster_path}
+                                img={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                                 id={movie.id}
                             />
                         ))}
