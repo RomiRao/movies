@@ -8,28 +8,33 @@ import BarLoader from "react-spinners/BarLoader";
 
 export default function Home() {
     const [currentIndex, setCurrentIndex] = useState(0);
-
     const { data, getMovies } = useMovies();
+
+    let timer = 0;
+
     useEffect(() => {
         getMovies("popular");
-    }, [currentIndex]);
+    }, []);
+
+    useEffect(() => {
+        goNext();
+    }, [data, currentIndex]);
+
+    const goToIndex = (index) => {
+        clearTimeout(timer);
+        setCurrentIndex(index);
+    };
 
     const goNext = () => {
-        const timeout = setTimeout(() => {
+        timer = setTimeout(() => {
             if (currentIndex < data.length - 1) {
                 setCurrentIndex(currentIndex + 1);
             } else if (currentIndex === data.length - 1) {
                 setCurrentIndex(0);
             }
+            console.log("me ejecute perras");
         }, 5000);
-        clearTimeout(timeout);
     };
-
-    const goToIndex = (index) => {
-        setCurrentIndex(index);
-    };
-
-    goNext();
 
     return (
         <>
