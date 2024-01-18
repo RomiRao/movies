@@ -7,17 +7,17 @@ import { useParams } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
 
 export default function MovieDetail() {
-    const { data, getMovies } = useMovies();
+    const { data, getMovie } = useMovies();
 
     let { id } = useParams();
 
     useEffect(() => {
-        getMovies(id);
+        getMovie(id);
     }, []);
 
     return (
         <>
-            {data.title ? (
+            {data?.title ? (
                 <Box
                     display="flex"
                     justifyContent="center"
