@@ -10,8 +10,11 @@ import {
 } from "@mui/material";
 import { useEffect } from "react";
 import useMovies from "../Hooks/useMovies";
+import { useNavigate } from "react-router-dom";
 
 export default function MovieSmallList({ title, fetch }) {
+    const navigate = useNavigate();
+
     const { data, getMovies } = useMovies();
 
     useEffect(() => {
@@ -33,7 +36,9 @@ export default function MovieSmallList({ title, fetch }) {
             >
                 {data.map((movie) => (
                     <ListItem disablePadding alignItems="center" key={movie.id}>
-                        <ListItemButton>
+                        <ListItemButton
+                            onClick={() => navigate(`/movie/${movie.id}`)}
+                        >
                             <ListItemAvatar>
                                 <Avatar
                                     alt={movie.title}
