@@ -33,7 +33,7 @@ export default function Carrousel({ title, img, desc, id, children }) {
                     {title}
                 </Typography>
                 <Typography m={1} variant="body2">
-                    {desc}
+                    {desc.length < 200 ? desc : `${desc.slice(0, 200)}...`}
                 </Typography>
                 <Button
                     m={1}
