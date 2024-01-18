@@ -1,6 +1,7 @@
 import {
     Avatar,
     Box,
+    IconButton,
     List,
     ListItem,
     ListItemAvatar,
@@ -11,8 +12,12 @@ import {
 import { useEffect } from "react";
 import useMovies from "../../hooks/useMovies";
 import { useNavigate } from "react-router-dom";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { FavoritesContext } from "../../context/FavoritesContext";
+import { useContext } from "react";
 
 export default function MovieSmallList({ title, fetch }) {
+    const { addFavs, delFavs, isFavs } = useContext(FavoritesContext);
     const navigate = useNavigate();
 
     const { data, getMovies } = useMovies();
@@ -46,6 +51,25 @@ export default function MovieSmallList({ title, fetch }) {
                                 />
                             </ListItemAvatar>
                             <ListItemText primary={movie.title} />
+                            {isFavs(movie.id) ? (
+                                <IconButton
+                                    onClick={(e) => delFavs(e, movie.id)}
+                                >
+                                    <FaHeart color="red" />
+                                </IconButton>
+                            ) : (
+                                <IconButton
+                                    onClick={(e) =>
+                                        addFavs(e, {
+                                            title: movie.title,
+                                            img: movie.poster_path,
+                                            id: movie.id,
+                                        })
+                                    }
+                                >
+                                    <FaRegHeart color="red" />
+                                </IconButton>
+                            )}
                         </ListItemButton>
                     </ListItem>
                 ))}
