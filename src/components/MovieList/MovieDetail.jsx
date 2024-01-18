@@ -2,7 +2,7 @@ import { Box, Button, List, ListItem, Typography } from "@mui/material";
 import { FaCirclePlay } from "react-icons/fa6";
 import styles from "./MovieDetail.module.css";
 import { useEffect } from "react";
-import useMovies from "../Hooks/useMovies";
+import useMovies from "../../hooks/useMovies";
 import { useParams } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
 

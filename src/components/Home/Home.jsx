@@ -3,7 +3,7 @@ import MovieSmallList from "./MovieSmallList";
 import Carrousel from "./Carrousel";
 import { useEffect, useState } from "react";
 import { GoDotFill, GoDot } from "react-icons/go";
-import useMovies from "../Hooks/useMovies";
+import useMovies from "../../hooks/useMovies";
 import BarLoader from "react-spinners/BarLoader";
 
 export default function Home() {

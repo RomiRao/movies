@@ -1,30 +1,36 @@
-import { Pagination, Typography, Box } from "@mui/material";
+import { useContext } from "react";
+import { FavoritesContext } from "../../context/FavoritesContext";
+import { Box, Pagination, Typography } from "@mui/material";
 import MovieCard from "./MovieCard";
-import { useEffect } from "react";
-import useMovies from "../../hooks/useMovies";
-import BarLoader from "react-spinners/BarLoader";
+import { BarLoader } from "react-spinners";
 
-export default function MovieList({ title, fetch }) {
-    const { data, getMovies } = useMovies();
-
-    useEffect(() => {
-        getMovies(fetch);
-    }, [data]);
+export default function FavoritesList() {
+    const { favorites } = useContext(FavoritesContext);
 
     return (
         <>
-            {data.length === 0 ? (
-                <Box padding={40} display="flex" justifyContent="center">
+            {favorites.length === 0 ? (
+                <Box
+                    padding={35}
+                    display="flex"
+                    flexDirection="column"
+                    alignItems="center"
+                >
                     <BarLoader
                         color="#E47861"
                         size={150}
                         aria-label="Loading Spinner"
                     />
+                    <Typography color="#E47861" mt={4}>
+                        Loading, please wait, if it doen't change you might not
+                        have any favorite movie. Click on each card's heart to
+                        save here your favorites movies!
+                    </Typography>
                 </Box>
             ) : (
                 <>
                     <Typography variant="h4" textAlign="center" m={4}>
-                        {title}
+                        Favorites
                     </Typography>
                     <Box
                         display="flex"
@@ -33,15 +39,15 @@ export default function MovieList({ title, fetch }) {
                     >
                         <Box
                             display="flex"
-                            p={3}
                             maxWidth="87.5%"
+                            p={3}
                             flexWrap="wrap"
                         >
-                            {data.map((movie) => (
+                            {favorites.map((movie) => (
                                 <MovieCard
                                     key={movie.title}
                                     title={movie.title}
-                                    img={movie.poster_path}
+                                    img={movie.img}
                                     id={movie.id}
                                 />
                             ))}
