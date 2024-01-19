@@ -62,6 +62,7 @@ export default function Carrousel({
                             <GoDot
                                 color="white"
                                 onClick={() => goToIndex(index)}
+                                cursor="pointer"
                             />
                         )}
                     </Box>
