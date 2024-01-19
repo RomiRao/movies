@@ -1,7 +1,6 @@
 import { Box, Pagination, TextField, Typography } from "@mui/material";
 import MovieCard from "../MovieList/MovieCard";
 import { useState, useEffect } from "react";
-import { BarLoader } from "react-spinners";
 import useMovies from "../../hooks/useMovies";
 
 export default function MoviesSearch() {
@@ -31,18 +30,8 @@ export default function MoviesSearch() {
                 />
             </Box>
             {data.length === 0 ? (
-                <Box
-                    padding={23}
-                    display="flex"
-                    flexDirection="column"
-                    alignItems="center"
-                >
-                    <BarLoader
-                        color="#E47861"
-                        size={150}
-                        aria-label="Loading Spinner"
-                    />
-                    <Typography color="#E47861" mt={3}>
+                <Box padding={25} display="flex" justifyContent="center">
+                    <Typography color="#E47861">
                         The movie you are looking for doesn't exist. Please
                         enter another title.
                     </Typography>
