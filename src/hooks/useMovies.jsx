@@ -38,7 +38,23 @@ const useMovies = () => {
         }
     };
 
-    return { data, getMovies, getMovie };
+    const searchMovie = async (input) => {
+        try {
+            const response = await axios.get(
+                `https://api.themoviedb.org/3/search/movie?query=${input}&language=en-US&page=1`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${apiKey}`,
+                    },
+                }
+            );
+            setData(response.data.results);
+        } catch (error) {
+            console.error("Error fetching movies:", error);
+        }
+    };
+
+    return { data, getMovies, getMovie, searchMovie };
 };
 
 export default useMovies;
