@@ -21,7 +21,9 @@ export default function MoviesSearch() {
                 alignItems="center"
                 m={3}
             >
-                <Typography textAlign="center">Search movie bellow</Typography>
+                <Typography textAlign="center">
+                    Enter movie title bellow
+                </Typography>
                 <TextField
                     sx={{ width: "90%", maxWidth: "700px", m: 2 }}
                     value={input}
