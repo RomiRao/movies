@@ -45,7 +45,7 @@ export default function FavoritesList() {
                         >
                             {favorites.map((movie) => (
                                 <MovieCard
-                                    key={movie.title}
+                                    key={movie.id}
                                     title={movie.title}
                                     img={movie.img}
                                     id={movie.id}
