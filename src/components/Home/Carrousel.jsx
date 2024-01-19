@@ -1,7 +1,16 @@
 import { Box, Button, Typography } from "@mui/material";
+import { GoDot, GoDotFill } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 
-export default function Carrousel({ title, img, desc, id, children }) {
+export default function Carrousel({
+    title,
+    img,
+    desc,
+    id,
+    currentIndex,
+    goToIndex,
+    movies,
+}) {
     const navigate = useNavigate();
 
     return (
@@ -44,7 +53,20 @@ export default function Carrousel({ title, img, desc, id, children }) {
                     Details
                 </Button>
             </Box>
-            {children}
+            <Box display="flex" justifyContent="center" alignItems="center">
+                {movies.map((movie, index) => (
+                    <Box key={index}>
+                        {index === currentIndex ? (
+                            <GoDotFill color="white" fontSize="20px" />
+                        ) : (
+                            <GoDot
+                                color="white"
+                                onClick={() => goToIndex(index)}
+                            />
+                        )}
+                    </Box>
+                ))}
+            </Box>
         </Box>
     );
 }

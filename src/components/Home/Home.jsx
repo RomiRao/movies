@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import MovieSmallList from "./MovieSmallList";
 import Carrousel from "./Carrousel";
 import { useEffect, useState } from "react";
-import { GoDotFill, GoDot } from "react-icons/go";
 import useMovies from "../../hooks/useMovies";
 import BarLoader from "react-spinners/BarLoader";
 
@@ -53,29 +52,10 @@ export default function Home() {
                             desc={data[currentIndex].overview}
                             img={data[currentIndex].backdrop_path}
                             id={data[currentIndex].id}
-                        >
-                            <Box
-                                display="flex"
-                                justifyContent="center"
-                                alignItems="center"
-                            >
-                                {data.map((movie, index) => (
-                                    <Box key={index}>
-                                        {index === currentIndex ? (
-                                            <GoDotFill
-                                                color="white"
-                                                fontSize="20px"
-                                            />
-                                        ) : (
-                                            <GoDot
-                                                color="white"
-                                                onClick={() => goToIndex(index)}
-                                            />
-                                        )}
-                                    </Box>
-                                ))}
-                            </Box>
-                        </Carrousel>
+                            currentIndex={currentIndex}
+                            goToIndex={goToIndex}
+                            movies={data}
+                        />
                     </Box>
                     <Box
                         padding={8}
