@@ -1,38 +1,18 @@
 import { Box } from "@mui/material";
 import MovieSmallList from "./MovieSmallList";
-import Carrousel from "./Carrousel";
-import { useEffect, useState } from "react";
+import MovieCarousel from "./MovieCarousel";
+import { useEffect } from "react";
 import useMovies from "../../hooks/useMovies";
 import BarLoader from "react-spinners/BarLoader";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Home() {
-    const [currentIndex, setCurrentIndex] = useState(0);
     const { data, getMovies } = useMovies();
-
-    let timer = 0;
 
     useEffect(() => {
         getMovies("popular");
     }, []);
-
-    useEffect(() => {
-        goNext();
-    }, [data, currentIndex]);
-
-    const goToIndex = (index) => {
-        clearTimeout(timer);
-        setCurrentIndex(index);
-    };
-
-    const goNext = () => {
-        timer = setTimeout(() => {
-            if (currentIndex < data.length - 1) {
-                setCurrentIndex(currentIndex + 1);
-            } else if (currentIndex === data.length - 1) {
-                setCurrentIndex(0);
-            }
-        }, 5000);
-    };
 
     return (
         <>
@@ -46,17 +26,24 @@ export default function Home() {
                 </Box>
             ) : (
                 <>
-                    <Box>
-                        <Carrousel
-                            title={data[currentIndex].title}
-                            desc={data[currentIndex].overview}
-                            img={data[currentIndex].backdrop_path}
-                            id={data[currentIndex].id}
-                            currentIndex={currentIndex}
-                            goToIndex={goToIndex}
-                            movies={data}
-                        />
-                    </Box>
+                    <Carousel
+                        autoPlay
+                        infiniteLoop
+                        interval={3000}
+                        showThumbs={false}
+                        showArrows={false}
+                        showStatus={false}
+                    >
+                        {data.map((movie) => (
+                            <MovieCarousel
+                                key={movie.id}
+                                title={movie.title}
+                                desc={movie.overview}
+                                img={movie.backdrop_path}
+                                id={movie.id}
+                            />
+                        ))}
+                    </Carousel>
                     <Box
                         padding={8}
                         sx={{
