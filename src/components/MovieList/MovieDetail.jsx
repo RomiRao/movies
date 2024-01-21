@@ -1,12 +1,23 @@
-import { Box, Button, List, ListItem, Typography } from "@mui/material";
-import { FaCirclePlay } from "react-icons/fa6";
+import {
+    Box,
+    Button,
+    IconButton,
+    List,
+    ListItem,
+    Typography,
+} from "@mui/material";
+import { FaCirclePlay, FaHeart, FaRegHeart } from "react-icons/fa6";
 import styles from "./MovieDetail.module.css";
 import { useEffect } from "react";
 import useMovies from "../../hooks/useMovies";
 import { useParams } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
+import { FavoritesContext } from "../../context/FavoritesContext";
+import { useContext } from "react";
 
 export default function MovieDetail() {
+    const { addFavs, delFavs, isFavs } = useContext(FavoritesContext);
+
     const { data, getMovie } = useMovies();
 
     let { id } = useParams();
@@ -66,13 +77,34 @@ export default function MovieDetail() {
                                         {data.release_date.slice(0, 4)}
                                     </Typography>
                                 </Box>
-                                <Button
-                                    className={styles.link}
-                                    startIcon={<FaCirclePlay />}
-                                    sx={{ color: "white" }}
-                                >
-                                    Trailer
-                                </Button>
+                                <Box>
+                                    {isFavs(data.id) ? (
+                                        <IconButton
+                                            onClick={(e) => delFavs(e, data.id)}
+                                        >
+                                            <FaHeart color="red" />
+                                        </IconButton>
+                                    ) : (
+                                        <IconButton
+                                            onClick={(e) =>
+                                                addFavs(e, {
+                                                    title: data.title,
+                                                    img: data.poster_path,
+                                                    id: data.id,
+                                                })
+                                            }
+                                        >
+                                            <FaRegHeart color="red" />
+                                        </IconButton>
+                                    )}
+                                    <Button
+                                        className={styles.link}
+                                        startIcon={<FaCirclePlay />}
+                                        sx={{ color: "white" }}
+                                    >
+                                        Trailer
+                                    </Button>
+                                </Box>
                             </Box>
                             <Typography variant="h6">Sinopsis</Typography>
                             <Typography variant="body2" mb={2}>

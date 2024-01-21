@@ -1,21 +1,20 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-export default function Carrousel({ title, img, desc, id, children }) {
+export default function MovieCarousel({ title, img, desc, id }) {
     const navigate = useNavigate();
 
     return (
         <Box
-            display="flex"
-            flexDirection="column"
-            justifyContent="end"
-            alignItems="center"
-            width="100%"
-            height={460}
             sx={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original/${img})`,
                 backgroundPosition: "top",
                 backgroundSize: "cover",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "end",
+                alignItems: "center",
+                width: "100%",
+                height: "460px",
             }}
         >
             <Box
@@ -44,7 +43,6 @@ export default function Carrousel({ title, img, desc, id, children }) {
                     Details
                 </Button>
             </Box>
-            {children}
         </Box>
     );
 }

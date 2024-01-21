@@ -40,10 +40,13 @@ export default function MovieCard({ title, img, id }) {
                     <FaRegHeart color="red" />
                 </IconButton>
             )}
-
-            <img
-                src={`https://image.tmdb.org/t/p/original${img}`}
-                width="100%"
+            <Box
+                sx={{
+                    backgroundImage: `url(https://image.tmdb.org/t/p/original/${img})`,
+                    backgroundPosition: "top",
+                    backgroundSize: "cover",
+                    height: "370px",
+                }}
             />
             <Typography textAlign="center" my={2}>
                 {title}

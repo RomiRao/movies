@@ -39,7 +39,7 @@ export default function MovieList({ title, fetch }) {
                         >
                             {data.map((movie) => (
                                 <MovieCard
-                                    key={movie.title}
+                                    key={movie.id}
                                     title={movie.title}
                                     img={movie.poster_path}
                                     id={movie.id}
