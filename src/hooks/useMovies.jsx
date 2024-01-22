@@ -5,17 +5,17 @@ const useMovies = () => {
     const apiKey = import.meta.env.VITE_ACCESS_TOKEN;
     const [data, setData] = useState([]);
 
-    const getMovies = async (category) => {
+    const getMovies = async (category, page) => {
         try {
             const response = await axios.get(
-                `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
+                `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`,
                 {
                     headers: {
                         Authorization: `Bearer ${apiKey}`,
                     },
                 }
             );
-            setData(response.data.results);
+            setData(response.data);
         } catch (error) {
             console.error("Error fetching movies:", error);
         }
