@@ -38,17 +38,17 @@ const useMovies = () => {
         }
     };
 
-    const searchMovie = async (input) => {
+    const searchMovie = async (input, page) => {
         try {
             const response = await axios.get(
-                `https://api.themoviedb.org/3/search/movie?query=${input}&language=en-US&page=1`,
+                `https://api.themoviedb.org/3/search/movie?query=${input}&language=en-US&page=${page}`,
                 {
                     headers: {
                         Authorization: `Bearer ${apiKey}`,
                     },
                 }
             );
-            setData(response.data.results);
+            setData(response.data);
         } catch (error) {
             console.error("Error fetching movies:", error);
         }

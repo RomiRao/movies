@@ -7,10 +7,15 @@ export default function MoviesSearch() {
     const [input, setInput] = useState("");
 
     const { data, searchMovie } = useMovies();
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        searchMovie(input);
-    }, [input]);
+        searchMovie(input, page);
+    }, [input, page]);
+
+    const handleChange = (event, value) => {
+        setPage(value);
+    };
 
     return (
         <>
@@ -29,7 +34,7 @@ export default function MoviesSearch() {
                     onChange={(e) => setInput(e.target.value)}
                 />
             </Box>
-            {data.length === 0 ? (
+            {data.results.length === 0 ? (
                 <Box padding={25} display="flex" justifyContent="center">
                     <Typography color="#E47861">
                         The movie you are looking for doesn't exist. Please
@@ -49,7 +54,7 @@ export default function MoviesSearch() {
                             maxWidth="87.5%"
                             flexWrap="wrap"
                         >
-                            {data.map((movie) =>
+                            {data.results.map((movie) =>
                                 movie.poster_path ? (
                                     <MovieCard
                                         key={movie.id}
@@ -60,8 +65,13 @@ export default function MoviesSearch() {
                                 ) : null
                             )}
                         </Box>
-                        <Box>
-                            <Pagination count={10} color="primary" />
+                        <Box my={3}>
+                            <Pagination
+                                count={data.total_pages}
+                                color="primary"
+                                page={page}
+                                onChange={handleChange}
+                            />
                         </Box>
                     </Box>
                 </>
