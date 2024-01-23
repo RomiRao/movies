@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FavoritesContext } from "../../context/FavoritesContext";
-import { Box, Pagination, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import MovieCard from "./MovieCard";
 import { BarLoader } from "react-spinners";
 
