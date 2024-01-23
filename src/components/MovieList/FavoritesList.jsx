@@ -52,9 +52,6 @@ export default function FavoritesList() {
                                 />
                             ))}
                         </Box>
-                        <Box>
-                            <Pagination count={10} color="primary" />
-                        </Box>
                     </Box>
                 </>
             )}
