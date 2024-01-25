@@ -1,15 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FavoritesContext } from "../../context/FavoritesContext";
-import { Box, Typography } from "@mui/material";
+import { Box, Pagination, Typography } from "@mui/material";
 import MovieCard from "./MovieCard";
 import { BarLoader } from "react-spinners";
 
 export default function FavoritesList() {
     const { favorites } = useContext(FavoritesContext);
+    const [page, setPage] = useState(1);
+    const itemsPerPage = 20;
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        const startIndex = (page - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const fmovies = favorites.slice(startIndex, endIndex);
+        setMovies(fmovies);
+    }, [page, favorites]);
+
+    const handleChange = (event, value) => {
+        setPage(value);
+    };
 
     return (
         <>
-            {favorites.length === 0 ? (
+            {movies.length === 0 ? (
                 <Box
                     padding={35}
                     display="flex"
@@ -43,7 +57,7 @@ export default function FavoritesList() {
                             p={3}
                             flexWrap="wrap"
                         >
-                            {favorites.map((movie) => (
+                            {movies.map((movie) => (
                                 <MovieCard
                                     key={movie.id}
                                     title={movie.title}
@@ -51,6 +65,16 @@ export default function FavoritesList() {
                                     id={movie.id}
                                 />
                             ))}
+                        </Box>
+                        <Box my={3}>
+                            <Pagination
+                                count={Math.ceil(
+                                    favorites.length / itemsPerPage
+                                )}
+                                color="primary"
+                                page={page}
+                                onChange={handleChange}
+                            />
                         </Box>
                     </Box>
                 </>
