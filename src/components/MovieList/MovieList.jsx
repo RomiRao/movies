@@ -12,6 +12,10 @@ export default function MovieList({ title, fetch }) {
         getMovies(fetch, page);
     }, [data, page]);
 
+    useEffect(() => {
+        setPage(1);
+    }, [title]);
+
     const handleChange = (event, value) => {
         setPage(value);
     };
