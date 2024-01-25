@@ -23,12 +23,13 @@ export default function MovieDetail() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const { data, getMovie } = useMovies();
+    const { data, getMovie, getVideo, video } = useMovies();
 
     let { id } = useParams();
 
     useEffect(() => {
         getMovie(id);
+        getVideo(id);
     }, []);
 
     return (
@@ -146,7 +147,7 @@ export default function MovieDetail() {
                             <iframe
                                 width="100%"
                                 height="600px"
-                                src={`https://www.youtube.com/embed/LPkNFRemZrM`}
+                                src={`https://www.youtube.com/embed/${video.key}`}
                                 frameBorder="0"
                                 allowFullScreen
                             ></iframe>
