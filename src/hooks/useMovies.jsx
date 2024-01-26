@@ -4,7 +4,7 @@ import axios from "axios";
 const useMovies = () => {
     const apiKey = import.meta.env.VITE_ACCESS_TOKEN;
     const [data, setData] = useState({});
-    const [video, setVideo] = useState({});
+    const [video, setVideo] = useState([]);
 
     const getAllMovies = async (category, page) => {
         try {
@@ -50,7 +50,9 @@ const useMovies = () => {
                 }
             );
 
-            setVideo(response.data.results[0]);
+            setVideo(
+                response.data.results.filter((obj) => obj.type === "Trailer")
+            );
         } catch (error) {
             console.error("Error fetching movies:", error);
         }

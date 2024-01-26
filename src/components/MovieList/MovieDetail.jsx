@@ -144,13 +144,19 @@ export default function MovieDetail() {
                             >
                                 <ImCross color="white" />
                             </IconButton>
-                            <iframe
-                                width="100%"
-                                height="600px"
-                                src={`https://www.youtube.com/embed/${video.key}`}
-                                frameBorder="0"
-                                allowFullScreen
-                            ></iframe>
+                            {video && video.length > 0 ? (
+                                <iframe
+                                    width="100%"
+                                    height="600px"
+                                    src={`https://www.youtube.com/embed/${video[0].key}`}
+                                    frameBorder="0"
+                                    allowFullScreen
+                                ></iframe>
+                            ) : (
+                                <Typography variant="body2">
+                                    No trailer available
+                                </Typography>
+                            )}
                         </Container>
                     </Modal>
                 </Box>
