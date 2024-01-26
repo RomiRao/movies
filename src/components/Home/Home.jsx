@@ -16,7 +16,7 @@ export default function Home() {
 
     return (
         <>
-            {!data ? (
+            {!data.results || data.results.length === 0 ? (
                 <Box padding={40} display="flex" justifyContent="center">
                     <BarLoader
                         color="#E47861"
