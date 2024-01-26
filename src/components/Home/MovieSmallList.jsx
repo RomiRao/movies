@@ -34,7 +34,6 @@ export default function MovieSmallList({ title, fetch }) {
             <List
                 sx={{
                     width: "100%",
-                    bgcolor: "background.paper",
                     overflow: "scroll",
                     maxHeight: "400px",
                 }}
