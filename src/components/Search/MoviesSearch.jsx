@@ -34,7 +34,7 @@ export default function MoviesSearch() {
                     onChange={(e) => setInput(e.target.value)}
                 />
             </Box>
-            {data.results.length === 0 ? (
+            {!data.results || data.results.length === 0 ? (
                 <Box padding={25} display="flex" justifyContent="center">
                     <Typography color="#E47861">
                         The movie you are looking for doesn't exist. Please

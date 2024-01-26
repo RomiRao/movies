@@ -3,7 +3,7 @@ import axios from "axios";
 
 const useMovies = () => {
     const apiKey = import.meta.env.VITE_ACCESS_TOKEN;
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
     const [video, setVideo] = useState([]);
 
     const fetchMovies = async (url) => {
