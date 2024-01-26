@@ -20,10 +20,10 @@ export default function MovieSmallList({ title, fetch }) {
     const { addFavs, delFavs, isFavs } = useContext(FavoritesContext);
     const navigate = useNavigate();
 
-    const { data, getAllMovies } = useMovies();
+    const { data, getData } = useMovies();
 
     useEffect(() => {
-        getAllMovies(fetch, 1);
+        getData(fetch, 1);
     }, [data]);
 
     return (

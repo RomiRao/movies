@@ -8,10 +8,10 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Home() {
-    const { data, getAllMovies } = useMovies();
+    const { data, getData } = useMovies();
 
     useEffect(() => {
-        getAllMovies("popular", 1);
+        getData("popular", 1);
     }, []);
 
     return (
