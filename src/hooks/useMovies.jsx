@@ -3,19 +3,20 @@ import axios from "axios";
 
 const useMovies = () => {
     const apiKey = import.meta.env.VITE_ACCESS_TOKEN;
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({});
+    const [video, setVideo] = useState([]);
 
-    const getMovies = async (category) => {
+    const getAllMovies = async (category, page) => {
         try {
             const response = await axios.get(
-                `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1`,
+                `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`,
                 {
                     headers: {
                         Authorization: `Bearer ${apiKey}`,
                     },
                 }
             );
-            setData(response.data.results);
+            setData(response.data);
         } catch (error) {
             console.error("Error fetching movies:", error);
         }
@@ -38,23 +39,42 @@ const useMovies = () => {
         }
     };
 
-    const searchMovie = async (input) => {
+    const getVideo = async (id) => {
         try {
             const response = await axios.get(
-                `https://api.themoviedb.org/3/search/movie?query=${input}&language=en-US&page=1`,
+                `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
                 {
                     headers: {
                         Authorization: `Bearer ${apiKey}`,
                     },
                 }
             );
-            setData(response.data.results);
+
+            setVideo(
+                response.data.results.filter((obj) => obj.type === "Trailer")
+            );
         } catch (error) {
             console.error("Error fetching movies:", error);
         }
     };
 
-    return { data, getMovies, getMovie, searchMovie };
+    const searchMovie = async (input, page) => {
+        try {
+            const response = await axios.get(
+                `https://api.themoviedb.org/3/search/movie?query=${input}&language=en-US&page=${page}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${apiKey}`,
+                    },
+                }
+            );
+            setData(response.data);
+        } catch (error) {
+            console.error("Error fetching movies:", error);
+        }
+    };
+
+    return { data, getAllMovies, getMovie, searchMovie, video, getVideo };
 };
 
 export default useMovies;

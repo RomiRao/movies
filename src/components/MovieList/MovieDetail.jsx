@@ -1,29 +1,35 @@
 import {
     Box,
     Button,
+    Container,
     IconButton,
     List,
     ListItem,
+    Modal,
     Typography,
 } from "@mui/material";
 import { FaCirclePlay, FaHeart, FaRegHeart } from "react-icons/fa6";
 import styles from "./MovieDetail.module.css";
-import { useEffect } from "react";
+import { useEffect, useContext, useState } from "react";
 import useMovies from "../../hooks/useMovies";
-import { useParams } from "react-router-dom";
 import BarLoader from "react-spinners/BarLoader";
 import { FavoritesContext } from "../../context/FavoritesContext";
-import { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { ImCross } from "react-icons/im";
 
 export default function MovieDetail() {
     const { addFavs, delFavs, isFavs } = useContext(FavoritesContext);
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-    const { data, getMovie } = useMovies();
+    const { data, getMovie, getVideo, video } = useMovies();
 
     let { id } = useParams();
 
     useEffect(() => {
         getMovie(id);
+        getVideo(id);
     }, []);
 
     return (
@@ -101,6 +107,7 @@ export default function MovieDetail() {
                                         className={styles.link}
                                         startIcon={<FaCirclePlay />}
                                         sx={{ color: "white" }}
+                                        onClick={handleOpen}
                                     >
                                         Trailer
                                     </Button>
@@ -120,6 +127,38 @@ export default function MovieDetail() {
                             </List>
                         </Box>
                     </Box>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-trailer"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Container
+                            sx={{
+                                mt: 3,
+                            }}
+                        >
+                            <IconButton
+                                sx={{ display: "block" }}
+                                onClick={handleClose}
+                            >
+                                <ImCross color="white" />
+                            </IconButton>
+                            {video && video.length > 0 ? (
+                                <iframe
+                                    width="100%"
+                                    height="600px"
+                                    src={`https://www.youtube.com/embed/${video[0].key}`}
+                                    frameBorder="0"
+                                    allowFullScreen
+                                ></iframe>
+                            ) : (
+                                <Typography variant="body2">
+                                    No trailer available
+                                </Typography>
+                            )}
+                        </Container>
+                    </Modal>
                 </Box>
             ) : (
                 <Box padding={40} display="flex" justifyContent="center">
