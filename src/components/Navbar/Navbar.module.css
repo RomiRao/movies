@@ -1,0 +1,17 @@
+.active {
+    color: white;
+    text-decoration: none;
+    background-color: #E47861;
+    height: 100%;
+    transition: all 500ms;
+}
+
+.pepito {
+    color: rgb(168, 150, 150);
+    text-decoration: none;
+}
+
+.pepito:hover {
+    color: white;
+    transition: color 500ms;
+}
