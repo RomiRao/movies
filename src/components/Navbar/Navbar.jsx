@@ -25,7 +25,7 @@ export default function Navbar() {
     return (
         <>
             <AppBar
-                sx={{ bgcolor: "#565267", boxShadow: "none" }}
+                sx={{ bgcolor: "#1B152C", boxShadow: "none" }}
                 position="static"
                 elevation={0}
             >

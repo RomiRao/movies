@@ -23,12 +23,12 @@ export default function MovieDetail() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const { data, getMovie, getVideo, video } = useMovies();
+    const { data, getData, getVideo, video } = useMovies();
 
     let { id } = useParams();
 
     useEffect(() => {
-        getMovie(id);
+        getData(id);
         getVideo(id);
     }, []);
 

@@ -20,10 +20,10 @@ export default function MovieSmallList({ title, fetch }) {
     const { addFavs, delFavs, isFavs } = useContext(FavoritesContext);
     const navigate = useNavigate();
 
-    const { data, getAllMovies } = useMovies();
+    const { data, getData } = useMovies();
 
     useEffect(() => {
-        getAllMovies(fetch, 1);
+        getData(fetch, 1);
     }, [data]);
 
     return (
@@ -34,7 +34,6 @@ export default function MovieSmallList({ title, fetch }) {
             <List
                 sx={{
                     width: "100%",
-                    bgcolor: "background.paper",
                     overflow: "scroll",
                     maxHeight: "400px",
                 }}

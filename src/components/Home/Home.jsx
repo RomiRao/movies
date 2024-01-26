@@ -8,15 +8,15 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function Home() {
-    const { data, getAllMovies } = useMovies();
+    const { data, getData } = useMovies();
 
     useEffect(() => {
-        getAllMovies("popular", 1);
+        getData("popular", 1);
     }, []);
 
     return (
         <>
-            {!data ? (
+            {!data.results || data.results.length === 0 ? (
                 <Box padding={40} display="flex" justifyContent="center">
                     <BarLoader
                         color="#E47861"

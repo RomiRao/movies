@@ -29,6 +29,7 @@ export default function FavoritesList() {
                     display="flex"
                     flexDirection="column"
                     alignItems="center"
+                    p={5}
                 >
                     <BarLoader
                         color="#E47861"
@@ -38,7 +39,7 @@ export default function FavoritesList() {
                     <Typography color="#E47861" mt={4}>
                         Loading, please wait, if it doen't change you might not
                         have any favorite movie. Click on each card's heart to
-                        save here your favorites movies!
+                        save here your favorite movies!
                     </Typography>
                 </Box>
             ) : (

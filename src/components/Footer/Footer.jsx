@@ -7,7 +7,7 @@ export default function Footer() {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            sx={{ backgroundColor: "#555166", padding: 3, color: "white" }}
+            sx={{ backgroundColor: "#1B152C", padding: 3, color: "white" }}
         >
             <MdLocalMovies />
             <Typography mx={1}>Movie app</Typography>
