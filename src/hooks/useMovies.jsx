@@ -6,7 +6,7 @@ const useMovies = () => {
     const [data, setData] = useState({});
     const [video, setVideo] = useState({});
 
-    const getMovies = async (category, page) => {
+    const getAllMovies = async (category, page) => {
         try {
             const response = await axios.get(
                 `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=${page}`,
@@ -72,7 +72,7 @@ const useMovies = () => {
         }
     };
 
-    return { data, getMovies, getMovie, searchMovie, video, getVideo };
+    return { data, getAllMovies, getMovie, searchMovie, video, getVideo };
 };
 
 export default useMovies;

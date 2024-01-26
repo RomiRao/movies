@@ -5,11 +5,11 @@ import useMovies from "../../hooks/useMovies";
 import BarLoader from "react-spinners/BarLoader";
 
 export default function MovieList({ title, fetch }) {
-    const { data, getMovies } = useMovies();
+    const { data, getAllMovies } = useMovies();
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-        getMovies(fetch, page);
+        getAllMovies(fetch, page);
     }, [data, page]);
 
     useEffect(() => {
