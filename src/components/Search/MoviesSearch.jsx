@@ -23,6 +23,7 @@ export default function MoviesSearch() {
                 display="flex"
                 flexDirection="column"
                 alignItems="center"
+                height="100%"
                 m={3}
             >
                 <Typography textAlign="center">
@@ -35,7 +36,7 @@ export default function MoviesSearch() {
                 />
             </Box>
             {!data.results || data.results.length === 0 ? (
-                <Box padding={25} display="flex" justifyContent="center">
+                <Box height="100%" p={5} display="flex" justifyContent="center">
                     <Typography color="#E47861">
                         The movie you are looking for doesn't exist. Please
                         enter another title.
