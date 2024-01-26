@@ -46,14 +46,15 @@ export default function MovieList({ title, fetch }) {
                             maxWidth="87.5%"
                             flexWrap="wrap"
                         >
-                            {data.results.map((movie) => (
-                                <MovieCard
-                                    key={movie.id}
-                                    title={movie.title}
-                                    img={movie.poster_path}
-                                    id={movie.id}
-                                />
-                            ))}
+                            {data.results &&
+                                data.results.map((movie) => (
+                                    <MovieCard
+                                        key={movie.id}
+                                        title={movie.title}
+                                        img={movie.poster_path}
+                                        id={movie.id}
+                                    />
+                                ))}
                         </Box>
                         <Box my={3}>
                             <Pagination

@@ -11,12 +11,12 @@ export default function Home() {
     const { data, getMovies } = useMovies();
 
     useEffect(() => {
-        getMovies("popular");
+        getMovies("popular", 1);
     }, []);
 
     return (
         <>
-            {data.length === 0 ? (
+            {!data ? (
                 <Box padding={40} display="flex" justifyContent="center">
                     <BarLoader
                         color="#E47861"
@@ -34,15 +34,16 @@ export default function Home() {
                         showArrows={false}
                         showStatus={false}
                     >
-                        {data.map((movie) => (
-                            <MovieCarousel
-                                key={movie.id}
-                                title={movie.title}
-                                desc={movie.overview}
-                                img={movie.backdrop_path}
-                                id={movie.id}
-                            />
-                        ))}
+                        {data.results &&
+                            data.results.map((movie) => (
+                                <MovieCarousel
+                                    key={movie.id}
+                                    title={movie.title}
+                                    desc={movie.overview}
+                                    img={movie.backdrop_path}
+                                    id={movie.id}
+                                />
+                            ))}
                     </Carousel>
                     <Box
                         padding={8}

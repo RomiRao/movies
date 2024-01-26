@@ -23,7 +23,7 @@ export default function MovieSmallList({ title, fetch }) {
     const { data, getMovies } = useMovies();
 
     useEffect(() => {
-        getMovies(fetch);
+        getMovies(fetch, 1);
     }, [data]);
 
     return (
@@ -39,40 +39,45 @@ export default function MovieSmallList({ title, fetch }) {
                     maxHeight: "400px",
                 }}
             >
-                {data.map((movie) => (
-                    <ListItem disablePadding alignItems="center" key={movie.id}>
-                        <ListItemButton
-                            onClick={() => navigate(`/movie/${movie.id}`)}
+                {data.results &&
+                    data.results.map((movie) => (
+                        <ListItem
+                            disablePadding
+                            alignItems="center"
+                            key={movie.id}
                         >
-                            <ListItemAvatar>
-                                <Avatar
-                                    alt={movie.title}
-                                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
-                                />
-                            </ListItemAvatar>
-                            <ListItemText primary={movie.title} />
-                            {isFavs(movie.id) ? (
-                                <IconButton
-                                    onClick={(e) => delFavs(e, movie.id)}
-                                >
-                                    <FaHeart color="red" />
-                                </IconButton>
-                            ) : (
-                                <IconButton
-                                    onClick={(e) =>
-                                        addFavs(e, {
-                                            title: movie.title,
-                                            img: movie.poster_path,
-                                            id: movie.id,
-                                        })
-                                    }
-                                >
-                                    <FaRegHeart color="red" />
-                                </IconButton>
-                            )}
-                        </ListItemButton>
-                    </ListItem>
-                ))}
+                            <ListItemButton
+                                onClick={() => navigate(`/movie/${movie.id}`)}
+                            >
+                                <ListItemAvatar>
+                                    <Avatar
+                                        alt={movie.title}
+                                        src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                                    />
+                                </ListItemAvatar>
+                                <ListItemText primary={movie.title} />
+                                {isFavs(movie.id) ? (
+                                    <IconButton
+                                        onClick={(e) => delFavs(e, movie.id)}
+                                    >
+                                        <FaHeart color="red" />
+                                    </IconButton>
+                                ) : (
+                                    <IconButton
+                                        onClick={(e) =>
+                                            addFavs(e, {
+                                                title: movie.title,
+                                                img: movie.poster_path,
+                                                id: movie.id,
+                                            })
+                                        }
+                                    >
+                                        <FaRegHeart color="red" />
+                                    </IconButton>
+                                )}
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
             </List>
         </Box>
     );
