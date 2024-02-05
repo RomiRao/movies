@@ -58,6 +58,7 @@ export default function MovieList({ title, fetch }) {
                         </Box>
                         <Box my={3}>
                             <Pagination
+                                sx={{ button: { color: "#ffffff" } }}
                                 count={data.total_pages}
                                 color="primary"
                                 page={page}

@@ -26,6 +26,7 @@ export default function MovieCarousel({ title, img, desc, id }) {
                     width: "90%",
                     maxWidth: "500px",
                     m: 4,
+                    color: "black",
                 }}
             >
                 <Typography variant="h5" m={2}>

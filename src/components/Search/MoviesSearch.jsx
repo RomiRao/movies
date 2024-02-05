@@ -30,14 +30,27 @@ export default function MoviesSearch() {
                     Enter movie title bellow
                 </Typography>
                 <TextField
-                    sx={{ width: "90%", maxWidth: "700px", m: 2 }}
+                    sx={{
+                        width: "90%",
+                        maxWidth: "700px",
+                        m: 2,
+                        color: "white",
+                    }}
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
+                    variant="outlined"
+                    color="primary"
+                    focused
+                    inputProps={{
+                        sx: {
+                            color: "#a31f40",
+                        },
+                    }}
                 />
             </Box>
             {!data.results || data.results.length === 0 ? (
                 <Box height="100%" p={5} display="flex" justifyContent="center">
-                    <Typography color="#E47861">
+                    <Typography>
                         The movie you are looking for doesn't exist. Please
                         enter another title.
                     </Typography>
@@ -68,6 +81,7 @@ export default function MoviesSearch() {
                         </Box>
                         <Box my={3}>
                             <Pagination
+                                sx={{ button: { color: "#ffffff" } }}
                                 count={data.total_pages}
                                 color="primary"
                                 page={page}

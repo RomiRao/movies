@@ -83,35 +83,6 @@ export default function MovieDetail() {
                                         {data.release_date.slice(0, 4)}
                                     </Typography>
                                 </Box>
-                                <Box>
-                                    {isFavs(data.id) ? (
-                                        <IconButton
-                                            onClick={(e) => delFavs(e, data.id)}
-                                        >
-                                            <FaHeart color="red" />
-                                        </IconButton>
-                                    ) : (
-                                        <IconButton
-                                            onClick={(e) =>
-                                                addFavs(e, {
-                                                    title: data.title,
-                                                    img: data.poster_path,
-                                                    id: data.id,
-                                                })
-                                            }
-                                        >
-                                            <FaRegHeart color="red" />
-                                        </IconButton>
-                                    )}
-                                    <Button
-                                        className={styles.link}
-                                        startIcon={<FaCirclePlay />}
-                                        sx={{ color: "white" }}
-                                        onClick={handleOpen}
-                                    >
-                                        Trailer
-                                    </Button>
-                                </Box>
                             </Box>
                             <Typography variant="h6">Sinopsis</Typography>
                             <Typography variant="body2" mb={2}>
@@ -125,6 +96,35 @@ export default function MovieDetail() {
                                     </ListItem>
                                 ))}
                             </List>
+                        </Box>
+                        <Box>
+                            {isFavs(data.id) ? (
+                                <IconButton
+                                    onClick={(e) => delFavs(e, data.id)}
+                                >
+                                    <FaHeart color="red" />
+                                </IconButton>
+                            ) : (
+                                <IconButton
+                                    onClick={(e) =>
+                                        addFavs(e, {
+                                            title: data.title,
+                                            img: data.poster_path,
+                                            id: data.id,
+                                        })
+                                    }
+                                >
+                                    <FaRegHeart color="red" />
+                                </IconButton>
+                            )}
+                            <Button
+                                className={styles.link}
+                                startIcon={<FaCirclePlay />}
+                                sx={{ color: "white" }}
+                                onClick={handleOpen}
+                            >
+                                Trailer
+                            </Button>
                         </Box>
                     </Box>
                     <Modal

@@ -46,7 +46,7 @@ export default function Home() {
                             ))}
                     </Carousel>
                     <Box
-                        padding={8}
+                        padding={{ xs: 0, sm: 8, md: 8 }}
                         sx={{
                             display: { sx: "block", sm: "block", md: "flex" },
                             justifyContent: "space-around",
