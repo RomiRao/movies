@@ -27,14 +27,20 @@ export default function MovieSmallList({ title, fetch }) {
     }, [data]);
 
     return (
-        <Box width="100%" maxWidth="570px" border="1px solid #E47861">
-            <Typography padding={2} textAlign="center" bgcolor="#E47861">
+        <Box
+            width="100%"
+            maxWidth="570px"
+            border="1px solid #590E24"
+            my={{ xs: 3 }}
+            mx={{ xs: 0, sm: 4, md: 4 }}
+        >
+            <Typography padding={2} textAlign="center" bgcolor="#590E24">
                 {title}
             </Typography>
             <List
                 sx={{
                     width: "100%",
-                    overflow: "scroll",
+                    overflowY: "scroll",
                     maxHeight: "400px",
                 }}
             >
@@ -59,7 +65,7 @@ export default function MovieSmallList({ title, fetch }) {
                                     <IconButton
                                         onClick={(e) => delFavs(e, movie.id)}
                                     >
-                                        <FaHeart color="red" />
+                                        <FaHeart color="#7D1631" />
                                     </IconButton>
                                 ) : (
                                     <IconButton
@@ -71,7 +77,7 @@ export default function MovieSmallList({ title, fetch }) {
                                             })
                                         }
                                     >
-                                        <FaRegHeart color="red" />
+                                        <FaRegHeart color="#7D1631" />
                                     </IconButton>
                                 )}
                             </ListItemButton>

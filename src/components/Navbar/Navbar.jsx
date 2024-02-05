@@ -25,7 +25,7 @@ export default function Navbar() {
     return (
         <>
             <AppBar
-                sx={{ bgcolor: "#1B152C", boxShadow: "none" }}
+                sx={{ bgcolor: "black", boxShadow: "none" }}
                 position="static"
                 elevation={0}
             >
@@ -77,7 +77,7 @@ export default function Navbar() {
                             display: { xs: "flex", sm: "none" },
                         }}
                     >
-                        <TiThMenu />
+                        <TiThMenu color="white" />
                     </IconButton>
                 </Toolbar>
             </AppBar>

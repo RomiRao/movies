@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { FavoritesContext } from "../../context/FavoritesContext";
 import { Box, Pagination, Typography } from "@mui/material";
 import MovieCard from "./MovieCard";
-import { BarLoader } from "react-spinners";
 
 export default function FavoritesList() {
     const { favorites } = useContext(FavoritesContext);
@@ -31,12 +30,7 @@ export default function FavoritesList() {
                     alignItems="center"
                     p={5}
                 >
-                    <BarLoader
-                        color="#E47861"
-                        size={150}
-                        aria-label="Loading Spinner"
-                    />
-                    <Typography color="#E47861" mt={4}>
+                    <Typography mt={4}>
                         Loading, please wait, if it doen't change you might not
                         have any favorite movie. Click on each card's heart to
                         save here your favorite movies!
@@ -72,6 +66,7 @@ export default function FavoritesList() {
                                 count={Math.ceil(
                                     favorites.length / itemsPerPage
                                 )}
+                                sx={{ button: { color: "#ffffff" } }}
                                 color="primary"
                                 page={page}
                                 onChange={handleChange}

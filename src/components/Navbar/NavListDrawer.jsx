@@ -10,7 +10,7 @@ import styles from "./NavListDrawer.module.css";
 
 export default function NavListDrawer({ setOpen, navLinks }) {
     return (
-        <Box sx={{ width: 280 }} component="nav">
+        <Box sx={{ width: 280 }} component="nav" bgcolor="black" height="100%">
             <List>
                 {navLinks.map((link) => (
                     <NavLink
