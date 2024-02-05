@@ -48,7 +48,7 @@ export default function MovieCard({ title, img, id }) {
                     height: "370px",
                 }}
             />
-            <Typography textAlign="center" my={2}>
+            <Typography textAlign="center" color="secondary" my={2}>
                 {title}
             </Typography>
         </Box>

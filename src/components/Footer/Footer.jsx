@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import { MdLocalMovies } from "react-icons/md";
 
 export default function Footer() {
@@ -7,10 +7,19 @@ export default function Footer() {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            sx={{ backgroundColor: "#1B152C", padding: 3, color: "white" }}
+            sx={{ backgroundColor: "black", padding: 3 }}
         >
             <MdLocalMovies />
-            <Typography mx={1}>Movie app</Typography>
+            <Link
+                mx={1}
+                href="https://portfolio-romina-rao.vercel.app"
+                underline="hover"
+                variant="body2"
+                color="secondary"
+                target="_blank"
+            >
+                Check my other proyects!
+            </Link>
         </Box>
     );
 }
